@@ -26,7 +26,13 @@ function encryptAndSend() {
 		}),
 	})
 		.then((response) => response.json())
-		.then((data) => console.log(data))
+		.then((data) => {
+			if (data.status == 200) {
+				alert('Created! Tap on Retrieve to edit. ');
+			} else {
+				alert(JSON.stringify(data));
+			}
+		})
 		.catch((error) => console.error('Error:', error));
 }
 
@@ -69,7 +75,7 @@ function showEditor(data) {
 function save() {
 	const code = document.getElementById('input_code').value;
 	const passphrase = document.getElementById('input_pp').value;
-	const lookupKey = generateKey(code, passphrase);
+	const lookupKey = generateNoteKey(code, passphrase);
 
 	const encryptedData = CryptoJS.AES.encrypt(
 		document.getElementById('editor').value,
@@ -89,4 +95,9 @@ function save() {
 		.then((response) => response.json())
 		.then((data) => console.log(data))
 		.catch((error) => console.error('Error:', error));
+	// change #save to say "saved" for 1 second
+	document.getElementById('save').innerHTML = 'Saved';
+	setTimeout(function () {
+		document.getElementById('save').innerHTML = 'Save';
+	}, 1000);
 }
