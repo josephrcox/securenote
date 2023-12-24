@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Encrypt and Send Data</title>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div>
+			<h2>securenote</h2>
+			<p>
+				securenote is a basic tech demo built to show how end-to-end encryption
+				may be used to secure notes.
+			</p>
+		</div>
+
+		<div id="noEditor">
+			<input
+				type="text"
+				id="input_code"
+				placeholder="Enter code to create or fetch"
+			/>
+			<input
+				type="text"
+				id="input_pp"
+				placeholder="Enter passphrase to create or fetch"
+			/>
+			<button onclick="encryptAndSend()" id="encryptnew">
+				Create new note
+			</button>
+			<button onclick="retrieveAndDecrypt()" id="fetch">
+				Retrieve and Decrypt
+			</button>
+		</div>
+		<div id="editorDiv" style="display: none">
+			<textarea id="editor" cols="50" rows="20"></textarea>
+			<button onclick="save()" id="save">Save</button>
+		</div>
+
+		<p>How does securenote work?</p>
+		<img src="image.jpg" alt="" />
+		<script src="script.js"></script>
+	</body>
+</html>
