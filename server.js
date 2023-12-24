@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-app.use(express.static('dist'));
+app.use(express.static('./'));
 
 app.use(bodyParser.json());
 
@@ -21,7 +21,7 @@ connection.once('open', function (res) {
 	connectedToDB = true;
 });
 
-const Note = require('./dist/models/note');
+const Note = require('./models/note');
 
 app.post('/secureapi/lookup', async (req, res) => {
 	const note = await Note.findOne({ encryptedKey: req.body.encryptedKey });
@@ -68,7 +68,7 @@ app.post('/secureapi/store', async (req, res) => {
 });
 
 app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname, '../dist/index.html'));
+	res.sendFile(path.join(__dirname, '../index.html'));
 });
 
 app.listen(port, () => {
