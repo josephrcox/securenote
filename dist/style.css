@@ -75,6 +75,11 @@ textarea {
 	font-family: 'Courier New', monospace;
 }
 
+/* all divs in body */
+body > div {
+	max-width: 500px;
+}
+
 #save {
 	background-color: #008cba;
 }
